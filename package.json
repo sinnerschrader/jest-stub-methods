@@ -5,13 +5,15 @@
   "license": "MIT",
   "files": [
     "lib/index.js",
+    "lib/index.js.map",
     "lib/index.d.ts"
   ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "lint": "tslint --project ."
   },
   "devDependencies": {
     "@types/jest": "^23.3.12",
