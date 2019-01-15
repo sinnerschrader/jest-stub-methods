@@ -2,14 +2,6 @@
 
 > Replace all methods on an object with spyable jest mocks.
 
-## Table of Contents
-
-- [jest-stub-methods](#jest-stub-methods)
-  - [Table of Contents](#table-of-contents)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [License](#license)
-
 ## Install
 
 ```sh
@@ -19,7 +11,7 @@ npm install jest-stub-methods
 ## Usage
 
 ```js
-import stubMethods from "jest-stub-methods";
+import stubMethods from 'jest-stub-methods';
 
 describe('My Suite', () => {
   let stubbedConsole;
@@ -33,9 +25,17 @@ describe('My Suite', () => {
   });
 
   it('logs a message', () => {
-    myFunc();
+    console.log('Hello, World!');
 
-    expect(stubbedConsole.stub.log).toHaveBeenCalled();
+    expect(stubbedConsole.stub.log).toHaveBeenCalledWith('Hello, World!');
+    expect(console.log).toHaveBeenCalledWith('Hello, World!');
+  });
+
+  it('logs a warning', () => {
+    console.warn('Attention!');
+
+    expect(stubbedConsole.stub.warn).toHaveBeenCalledWith('Attention!');
+    expect(console.warn).toHaveBeenCalledWith('Attention!');
   });
 });
 ```
