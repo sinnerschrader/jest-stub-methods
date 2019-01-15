@@ -3,13 +3,21 @@ import {stubMethods} from '.';
 describe('stubMethods', () => {
   describe('#stub', () => {
     it('replaces all method properties with a stub', () => {
+      const methodSpy = jest.fn();
+
       const testObject = {
-        method: () => undefined
+        method(foo: string): void {
+          methodSpy(foo);
+        }
       };
 
       const stubbedTestObject = stubMethods(testObject);
 
-      expect(stubbedTestObject.stub.method).toHaveProperty('mock');
+      testObject.method('test');
+
+      expect(methodSpy).not.toHaveBeenCalled();
+      expect(testObject.method).toHaveBeenCalledWith('test');
+      expect(stubbedTestObject.stub.method.mock.calls).toEqual([['test']]);
     });
 
     it("doesn't replace non-method properties", () => {
@@ -25,8 +33,12 @@ describe('stubMethods', () => {
 
   describe('#restore()', () => {
     it('restores the original implementation', () => {
+      const methodSpy = jest.fn();
+
       const testObject = {
-        method: () => 'original'
+        method(foo: string): void {
+          methodSpy(foo);
+        }
       };
 
       const stubbedTestObject = stubMethods(testObject);
@@ -34,7 +46,10 @@ describe('stubMethods', () => {
       stubbedTestObject.restore();
 
       expect(stubbedTestObject.stub.method).not.toHaveProperty('mock');
-      expect(stubbedTestObject.stub.method()).toEqual('original');
+
+      testObject.method('test');
+
+      expect(methodSpy).toHaveBeenCalledWith('test');
     });
   });
 });
