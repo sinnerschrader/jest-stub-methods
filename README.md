@@ -32,9 +32,10 @@ describe('My Suite', () => {
   });
 
   it('logs a warning', () => {
-    console.warn('Attention');
+    console.warn('Attention!');
 
-    expect(stubbedConsole.stub.warn).toHaveBeenCalledWith('Attention');
+    expect(stubbedConsole.stub.warn).toHaveBeenCalledWith('Attention!');
+    expect(console.warn).toHaveBeenCalledWith('Attention!');
   });
 });
 ```
