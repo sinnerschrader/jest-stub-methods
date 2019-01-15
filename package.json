@@ -1,0 +1,27 @@
+{
+  "name": "jest-stub-methods",
+  "version": "0.1.0",
+  "description": "Replace all methods on an object with spyable jest mocks.",
+  "license": "MIT",
+  "files": [
+    "lib/index.js",
+    "lib/index.d.ts"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.12",
+    "jest": "^23.6.0",
+    "ts-config": "^20.9.0",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.2"
+  },
+  "peerDependencies": {
+    "jest": "^23.6.0"
+  }
+}
