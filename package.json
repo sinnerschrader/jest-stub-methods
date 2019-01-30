@@ -24,6 +24,6 @@
     "typescript": "^3.2.2"
   },
   "peerDependencies": {
-    "jest": "^23.6.0"
+    "jest": "23.x || 24.x"
   }
 }
