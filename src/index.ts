@@ -3,11 +3,11 @@ export interface Stubbed<T extends Stubbable> {
   restore(): void;
 }
 
-interface Stubbable {
+export interface Stubbable {
   [key: string]: unknown;
 }
 
-type Stub<T extends Stubbable> = {
+export type Stub<T extends Stubbable> = {
   // tslint:disable-next-line: ban-types
   [key in keyof T]: T[key] extends Function ? T[key] & jest.Mock : T[key]
 };
