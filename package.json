@@ -1,6 +1,6 @@
 {
   "name": "jest-stub-methods",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Replace all methods on an object with spyable jest mocks.",
   "license": "MIT",
   "files": [
